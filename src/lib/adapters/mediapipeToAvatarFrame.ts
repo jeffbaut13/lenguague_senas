@@ -619,7 +619,7 @@ function buildRetargetFromPose(normalized: NormalizedCapture): {
     const chestRoll = shoulderAxisRaw ? Math.atan2(shoulderAxisRaw.y, shoulderAxisRaw.x) * 0.3 : 0;
     bones.chest = {
       rotation: {
-        x: chestAngles.pitch * 0.8,
+        x: -chestAngles.pitch * 0.8,
         y: chestAngles.yaw,
         z: chestRoll,
       },
@@ -637,7 +637,7 @@ function buildRetargetFromPose(normalized: NormalizedCapture): {
 
       // Conversión aproximada world->local de cabeza respecto a torso.
       const localHead: EulerRotation = {
-        x: headAngles.pitch - chestAngles.pitch,
+        x: -(headAngles.pitch - chestAngles.pitch),
         y: headAngles.yaw - chestAngles.yaw,
         z: 0,
       };
